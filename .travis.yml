@@ -1,4 +1,12 @@
+version: ~> 1.0
 language: java
 
 notifications:
   email: false
+
+jdk:
+  - openjdk8
+import: land-of-apps/land-of-apps:travis/java-imports.yml
+
+script:
+  - travis_wait mvn test
