@@ -1,4 +1,12 @@
+version: ~> 1.0
 language: java
 
 notifications:
   email: false
+
+jdk:
+  - openjdk8
+import: land-of-apps/land-of-apps:travis/java-imports.yml
+
+script:
+  - travis_wait mvn -DargLine="-Dappmap.config.file=$PWD/appmap.yml -Dappmap.debug=true -javaagent:$PWD/appmap.jar -Dappmap.output.directory=$PWD/tmp/appmap" test
